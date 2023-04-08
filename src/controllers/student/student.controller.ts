@@ -7,7 +7,7 @@ export const newStudent = async (
 ): Promise<AxiosResponse | AxiosError> => {
 	try {
 		const existsStudent = await StudenModel.findOne({
-			rfc: req.body.rfc,
+			curp: req.body.curp,
 			userId: req.body.userId,
 		});
 		if (existsStudent) {
@@ -20,6 +20,7 @@ export const newStudent = async (
 		const student = new StudenModel(req.body);
 		await student.save();
 		return res.json({
+			status: 200,
 			msg: `${student.name} fue registrado/a`,
 		});
 	} catch (error) {

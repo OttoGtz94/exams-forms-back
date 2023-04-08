@@ -22,7 +22,7 @@ const StudenSchema = new Schema({
 		required: true,
 		trim: true,
 	},
-	rfc: {
+	curp: {
 		type: String,
 		required: true,
 	},
