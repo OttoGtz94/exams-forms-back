@@ -1,5 +1,6 @@
 import { AxiosResponse, AxiosError } from 'axios';
 import ExamModel from '@model/exam.model';
+import { ObjectId } from 'mongodb';
 
 export const newExam = async (
 	req: any,
@@ -15,5 +16,27 @@ export const newExam = async (
 		});
 	} catch (error) {
 		return error as AxiosError;
+	}
+};
+
+export const getExams = async (
+	req: any,
+	res: any,
+): Promise<AxiosResponse | AxiosError> => {
+	try {
+		const _id = new ObjectId(req.params.id);
+		const exams = await ExamModel.find({
+			userId: _id,
+		});
+		return res.json({
+			status: 200,
+			exams,
+			msg: 'Examenes obtenidos satisfactoriamente.',
+		});
+	} catch (error) {
+		return res.json({
+			status: 500,
+			msg: 'Error Get Exams',
+		});
 	}
 };

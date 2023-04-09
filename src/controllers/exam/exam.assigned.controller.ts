@@ -99,9 +99,10 @@ export const getAllExamAssigned = async (
 						as: 'examenesAsig',
 					},
 				},
+				{ $unwind: '$examenesAsig' },
 				{
 					$match: {
-						userId: new ObjectId(req.body.userId),
+						userId: new ObjectId(req.params.id),
 					},
 				},
 			]);

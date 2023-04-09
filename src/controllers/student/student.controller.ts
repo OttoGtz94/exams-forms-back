@@ -1,5 +1,6 @@
 import StudenModel from '@model/student.model';
 import { AxiosResponse, AxiosError } from 'axios';
+import { ObjectId } from 'mongodb';
 
 export const newStudent = async (
 	req: any,
@@ -25,5 +26,27 @@ export const newStudent = async (
 		});
 	} catch (error) {
 		return error as AxiosError;
+	}
+};
+
+export const getStudents = async (
+	req: any,
+	res: any,
+): Promise<AxiosResponse | AxiosError> => {
+	try {
+		const _id = new ObjectId(req.params.id);
+		const students = await StudenModel.find({
+			userId: _id,
+		});
+		return res.json({
+			status: 200,
+			students,
+			msg: 'Estudiantes obtenidos satisfactoriamente.',
+		});
+	} catch (error) {
+		return res.json({
+			status: 500,
+			msg: 'Error Get Students',
+		});
 	}
 };

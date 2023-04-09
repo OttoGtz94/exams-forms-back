@@ -15,7 +15,6 @@ const ExamAssignedSchema = new Schema({
 	examId: Schema.Types.ObjectId,
 	clave: {
 		type: String,
-		default: generateKey(),
 	},
 });
 
