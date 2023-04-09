@@ -40,3 +40,22 @@ export const getExams = async (
 		});
 	}
 };
+
+export const editExam = async (
+	req: any,
+	res: any,
+): Promise<AxiosResponse | AxiosError> => {
+	try {
+		const id = new ObjectId(req.params.id);
+		await ExamModel.findByIdAndUpdate(id, req.body);
+		return res.json({
+			status: 200,
+			msg: 'Examen editado.',
+		});
+	} catch (error) {
+		return res.json({
+			status: 500,
+			msg: 'Error edit exam',
+		});
+	}
+};
