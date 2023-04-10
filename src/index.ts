@@ -11,7 +11,7 @@ const app = express();
 dotenv.config();
 const PORT = process.env.PORT || 3500;
 //habilitar cors
-const whiteList = [
+/* const whiteList = [
 	'https://test-forms-ottogtz.netlify.app',
 ];
 const corsOptions = {
@@ -25,6 +25,15 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
+ */
+app.use((req, res, next) => {
+	res.header('Access-Control-Allow-Origin', '*');
+	res.header(
+		'Access-Control-Allow-Headers',
+		'Origin, X-Requested-With, Content-Type, Accept',
+	);
+	next();
+});
 app.use(express.json());
 
 app.use('/user', userRoutes);
