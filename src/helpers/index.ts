@@ -18,6 +18,8 @@ export const generateJWT = (user: UserInterface) => {
 	);
 };
 
+//export const generateJWTGuest = ()
+
 export const generateKey = (): string => {
 	const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 	let chars = '';

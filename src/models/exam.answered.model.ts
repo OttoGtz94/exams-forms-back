@@ -6,13 +6,20 @@ const ExamAnsweredSchema = new Schema({
 		type: Number,
 		required: true,
 	},
-	qualified: {
+	reviewed: {
 		type: Boolean,
+		default: false,
 	},
 	date: {
 		type: Date,
-		required: true,
+		default: new Date(),
 	},
+	studentAnswers: [
+		{
+			question: String,
+			answer: String,
+		},
+	],
 	userId: Schema.Types.ObjectId,
 	studentId: Schema.Types.ObjectId,
 	examId: Schema.Types.ObjectId,

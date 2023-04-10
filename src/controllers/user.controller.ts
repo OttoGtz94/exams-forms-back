@@ -116,15 +116,15 @@ export const hasToken = async (
 	res: any,
 ): Promise<AxiosResponse | AxiosError> => {
 	const { token } = req.body;
-	const dataJWT = jwt.decode(token);
+	const dataJWT: any = jwt.decode(token);
 	if (dataJWT !== null) {
 		const userInfo = {
-			email: 'genesis@mail.com',
-			exp: 1683435133,
-			firstName: 'Rivadeneira',
-			iat: 1680843133,
-			id: '642e7b42f9395cf8fd8ec6a2',
-			name: 'Genesis',
+			email: dataJWT.email,
+			exp: dataJWT.exp,
+			firstName: dataJWT.firstName,
+			iat: dataJWT.iat,
+			id: dataJWT.id,
+			name: dataJWT.name,
 		};
 		return res.json({
 			status: 200,
