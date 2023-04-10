@@ -218,7 +218,7 @@ export const getExamAssignedKey = async (
 	}
 };
 
-export const markExam = async (
+export const saveExamStudent = async (
 	req: any,
 	res: any,
 ): Promise<AxiosResponse | AxiosError> => {
@@ -271,15 +271,6 @@ export const markExam = async (
 			_id: examId.studentId,
 		});
 		student.examsAnsweredId.push(examAnswered._id);
-
-		/* const studentIdsExamAssigned =
-			student.examsAssigned.filter(
-				(idAssig: any) =>
-					new ObjectId(idAssig) !== idExamAssigned,
-			);
-
-		student.examsAssigned = studentIdsExamAssigned; */
-
 		const studentIdsExamAssigned =
 			student.examsAssignedId.filter(
 				(idAssig: any) =>
@@ -295,12 +286,12 @@ export const markExam = async (
 
 		return res.json({
 			status: 200,
-			msg: 'Examen Calificado',
+			msg: 'Examen Enviado',
 		});
 	} catch (error) {
 		return res.json({
 			status: 500,
-			msg: 'Error calificar',
+			msg: 'Error guardar',
 		});
 	}
 };
