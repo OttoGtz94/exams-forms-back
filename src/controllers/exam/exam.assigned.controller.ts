@@ -286,7 +286,7 @@ export const saveExamStudent = async (
 
 		return res.json({
 			status: 200,
-			msg: 'Examen Enviado',
+			msg: `Examen enviado, obtuviste ${points} puntos`,
 		});
 	} catch (error) {
 		return res.json({
