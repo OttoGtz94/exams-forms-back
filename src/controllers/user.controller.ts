@@ -30,7 +30,7 @@ export const newUser = async (
 			msg: `${user.name} fue registrado/a`,
 		});
 	} catch (error) {
-		return error as AxiosError;
+		return res.json({ status: 500, error });
 	}
 };
 

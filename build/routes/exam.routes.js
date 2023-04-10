@@ -1,0 +1,21 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const exam_assigned_controller_1 = require("../controllers/exam/exam.assigned.controller");
+const exam_controller_1 = require("../controllers/exam/exam.controller");
+const express_1 = __importDefault(require("express"));
+const exam_assigned_controller_2 = require("../controllers/exam/exam.assigned.controller");
+const exam_answered_controller_1 = require("../controllers/exam/exam.answered.controller");
+const router = express_1.default.Router();
+router.post('/new-exam', exam_controller_1.newExam);
+router.post('/assign-exam', exam_assigned_controller_1.assignExam);
+router.get('/get-exams-assigned/:id', exam_assigned_controller_1.getAllExamAssigned);
+router.get('/get-exams/:id', exam_controller_1.getExams);
+router.put('/update-exam/:id', exam_controller_1.editExam);
+router.get('/get-exam-key/:key', exam_assigned_controller_1.getExamAssignedKey);
+router.post('/save-exam-student/:id', exam_assigned_controller_2.saveExamStudent);
+router.get('/get-exams-answered/:id', exam_answered_controller_1.getExamsAnswereds);
+router.post('/mark-exam', exam_answered_controller_1.markExam);
+exports.default = router;
