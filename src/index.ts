@@ -12,7 +12,7 @@ dotenv.config();
 const PORT = process.env.PORT || 3500;
 //habilitar cors
 const whiteList = [
-	'https://test-forms-ottogtz.netlify.app/',
+	'https://test-forms-ottogtz.netlify.app',
 ];
 const corsOptions = {
 	origin: function (origin: any, callback: any) {
